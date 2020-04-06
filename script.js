@@ -14,8 +14,7 @@ document.querySelector('body').innerHTML = '<div class="wrapper"><textarea></tex
 
 function init() {
 	let out = '';
-	for (let i = 0; i < keyboard.length; i++) {
-		
+	for (let i = 0; i < keyboard.length; i++) {		
 		out += '<div class="k-key" id="' + keyboard[i] + '" >' + key[i] + '</div>';
 	}
 	document.querySelector('.container').innerHTML = out;
@@ -23,15 +22,15 @@ function init() {
 
 init();
 
-document.onkeypress = function (event) {
-  event.preventDefault();
-  document.querySelectorAll('.k-key').forEach(function (element) {
-    element.classList.remove('active');
+document.addEventListener('keydown', (event) => {
+	event.preventDefault();
+	document.querySelectorAll('.k-key').forEach(function (element) {
+	  element.classList.remove('active');
+	});
+	  document.getElementById(event.code).classList.add('active');
+	  str.push(key[keyboard.indexOf(event.code)]);
+	  document.querySelector('textarea').value = str.join('');
   });
-	document.getElementById(event.code).classList.add('active');
-	str.push(key[keyboard.indexOf(event.code)]);
-	document.querySelector('textarea').value = str.join('');
-}
 
 document.querySelectorAll('.k-key').forEach(function (element) {
 	element.onclick = function (event) {
