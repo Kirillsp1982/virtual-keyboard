@@ -19,7 +19,6 @@ function init() {
 	}
 	document.querySelector('.container').innerHTML = out;
 }
-
 init();
 
 document.addEventListener('keydown', (event) => {
@@ -43,7 +42,7 @@ document.querySelectorAll('.k-key').forEach(function (element) {
     if(this.getAttribute('id') === 'ShiftLeft' || this.getAttribute('id') === 'ShiftRight') {
       if(shift) {
         shift = false;
-      } else shift = true;
-    }
+	  } else shift = true;
+	}	
 	}   
 });
