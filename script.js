@@ -1,5 +1,5 @@
 "use strict"
-let str = '';
+let str = [];
 let shift = false;
 const keyboard = ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace", "Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash", "Delete", "CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter", "ShiftLeft", "KeyZ", "KeyX", "KeyC", "KeyV", "KeyB", "KeyN", "KeyM", "Comma", "Period", "Slash", "ArrowUp", "ShiftRight", "ControlLeft", "OSLeft", "AltLeft", "Space", "AltRight", "ControlRight", "ArrowLeft", "ArrowDown", "ArrowRight"];
 
@@ -29,7 +29,8 @@ document.onkeypress = function (event) {
     element.classList.remove('active');
   });
 	document.getElementById(event.code).classList.add('active');
-  str += event.code;
+	str.push(key[keyboard.indexOf(event.code)]);
+	document.querySelector('textarea').value = str.join('');
 }
 
 document.querySelectorAll('.k-key').forEach(function (element) {
@@ -37,14 +38,13 @@ document.querySelectorAll('.k-key').forEach(function (element) {
 		document.querySelectorAll('.k-key').forEach(function (element) {
 			element.classList.remove('active');
 		});
-		let code = this.getAttribute('id');
-		this.classList.add('active');	
-    if(code === 'ShiftLeft' || code === 'ShiftRight') {
+		this.classList.add('active');
+		str.push(key[keyboard.indexOf(this.getAttribute('id'))]);
+		document.querySelector('textarea').value = str.join('');
+    if(this.getAttribute('id') === 'ShiftLeft' || this.getAttribute('id') === 'ShiftRight') {
       if(shift) {
         shift = false;
       } else shift = true;
     }
 	}   
 });
-
-document.querySelector('textarea').value = str;
