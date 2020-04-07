@@ -1,5 +1,5 @@
 "use strict"
-console
+
 let str = [];
 let shift = false;
 let lang = 'en';
@@ -60,7 +60,7 @@ function keydown(event) {
 	});
 	document.getElementById(event.code).classList.add('active');
   text(event.code);
-  if (element.id !== 'AltLeft') setTimeout(() => element.classList.remove('active'), 700);
+  if (event.code !== 'AltLeft') setTimeout(() => document.getElementById(event.code).classList.remove('active'), 700);
 };
 
 function text(element) {  
