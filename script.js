@@ -1,5 +1,5 @@
 "use strict"
-
+console
 let str = [];
 let shift = false;
 let lang = 'en';
@@ -18,7 +18,7 @@ const keyRuLow = ["ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "
 
 let key = keyEnLow;
 
-document.querySelector('body').innerHTML = '<div class="wrapper"><textarea></textarea><div class="container"></div><div><p class="info">Для смены языка ввода нажмите Shift, затем Левый Ctrl.</p></div></div>';
+document.querySelector('body').innerHTML = '<div class="wrapper"><textarea></textarea><div class="container"></div><div><p class="info">Для смены языка ввода нажмите Left Alt, затем Left Ctrl.</p></div></div>';
 
 function init() {
   document.querySelector('.container').innerHTML = null;
@@ -38,10 +38,13 @@ function init() {
   document.querySelectorAll('.k-key').forEach(function (element) {
 	  element.onclick = function (event) {
 		  document.querySelectorAll('.k-key').forEach(function (element) {
-			  element.classList.remove('active');
+        if (element.id === 'AltLeft') {
+          setTimeout(() => element.classList.remove('active'), 2000);
+        } else element.classList.remove('active');
 		  });
 		  element.classList.add('active');
-		  text(element.getAttribute('id'));
+      text(element.getAttribute('id'));
+      if (element.id !== 'AltLeft') setTimeout(() => element.classList.remove('active'), 700);
 	  }   
   });
 }
@@ -51,10 +54,13 @@ init();
 function keydown(event) {
 	event.preventDefault();
 	document.querySelectorAll('.k-key').forEach(function (element) {
-	  element.classList.remove('active');
+	  if (element.id === 'AltLeft') {
+      setTimeout(() => element.classList.remove('active'), 1500);
+    } else element.classList.remove('active');
 	});
 	document.getElementById(event.code).classList.add('active');
-	text(event.code);
+  text(event.code);
+  if (element.id !== 'AltLeft') setTimeout(() => element.classList.remove('active'), 700);
 };
 
 function text(element) {  
@@ -79,11 +85,15 @@ function text(element) {
     break;
   
   
-  case 'ControlLeft': 
-    if (shift) lang = 'en' ? 'ru' : 'en';
-    localStorage.lang = lang;
-    document.removeEventListener('keydown', keydown);	
-    setTimeout(init, 700);
+  case 'ControlLeft':
+    if (document.querySelector('#AltLeft').classList.contains('active')) {      
+      if (lang === 'en') {
+        lang = 'ru';
+      } else lang = 'en';
+      localStorage.lang = lang;
+      document.removeEventListener('keydown', keydown);	
+      setTimeout(init, 700);
+    } 
     break;
 
   case 'Delete':
