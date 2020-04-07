@@ -18,7 +18,7 @@ const keyRuLow = ["ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "
 
 let key = keyEnLow;
 
-document.querySelector('body').innerHTML = '<div class="wrapper"><textarea></textarea><div class="container"></div><div><p class="info">Для смены языка ввода нажмите Left Alt, затем Left Ctrl.</p></div></div>';
+document.querySelector('body').innerHTML = '<div class="wrapper"><textarea></textarea><div class="container"></div><div><p class="info">Для смены языка ввода нажмите Left Alt, затем Left Ctrl.<br>Приложение разработано в ОС Windows.</p></div></div>';
 
 function init() {
   document.querySelector('.container').innerHTML = null;
