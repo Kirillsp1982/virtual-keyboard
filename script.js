@@ -38,9 +38,7 @@ function init() {
   document.querySelectorAll('.k-key').forEach(function (element) {
 	  element.onclick = function (event) {
 		  document.querySelectorAll('.k-key').forEach(function (element) {
-        if (element.id === 'AltLeft') {
-          setTimeout(() => element.classList.remove('active'), 2000);
-        } else element.classList.remove('active');
+        if (element.id === 'AltLeft') setTimeout(() => element.classList.remove('active'), 2000);
 		  });
 		  element.classList.add('active');
       text(element.getAttribute('id'));
@@ -54,9 +52,7 @@ init();
 function keydown(event) {
 	event.preventDefault();
 	document.querySelectorAll('.k-key').forEach(function (element) {
-	  if (element.id === 'AltLeft') {
-      setTimeout(() => element.classList.remove('active'), 1500);
-    } else element.classList.remove('active');
+	  if (element.id === 'AltLeft') setTimeout(() => element.classList.remove('active'), 1500);
 	});
 	document.getElementById(event.code).classList.add('active');
   text(event.code);
