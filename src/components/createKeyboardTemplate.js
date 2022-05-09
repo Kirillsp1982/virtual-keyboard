@@ -66,7 +66,7 @@ const createKeyboardTemplate = () => (
     <button data-key="ControlLeft">Ctrl</button>
     <button data-key="MetaLeft">Win</button>
     <button data-key="AltLeft">Alt</button>
-    <button data-key="Space"></button>
+    <button data-key="Space"> </button>
     <button data-key="AltRight">Alt</button>
     <button data-key="ArrowLeft">&larr;</button>
     <button data-key="ArrowDown">&darr;</button>

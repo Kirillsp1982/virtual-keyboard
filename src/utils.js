@@ -10,6 +10,25 @@ export const addTextareaListener = () => {
 };
 
 export const addTextareaValue = (key) => {
-  valueArr.push(key);
+  switch (key) {
+    case '⇐':
+      valueArr.pop();
+      break;
+    case 'Tab':
+      valueArr.push('\t');
+      break;
+    case '↵':
+      valueArr.push('\n');
+      break;
+    case 'Caps':
+    case 'Alt':
+    case 'Shift':
+    case 'Win':
+    case 'Ctrl':
+      break;
+    default:
+      valueArr.push(key);
+      break;
+  }
   textarea.value = valueArr.join('');
 };
