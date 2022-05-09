@@ -16,7 +16,6 @@ render(mainContainer, createKeyboardTemplate());
 render(mainContainer, createTextTemplate());
 
 window.addEventListener('keydown', (e) => {
-  console.log(e.code);
   const el = document.querySelector(`button[data-key='${e.code}']`);
   if (el) {
     el.classList.add('pressed');
