@@ -42,6 +42,7 @@ button {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.125;
+  outline: none;
   padding: 0.33em 0.66em;
   position: relative;
   text-align: center;
@@ -59,34 +60,34 @@ button:active, button.pressed {
   transition: all .2s;
 }
 
-button[data-key=backspace] {
+button[data-key=Backspace] {
   width: 80px;
 }
 
-button[data-key=tab],
-button[data-key=\\] {
+button[data-key=Tab],
+button[data-key=Backslash] {
   width: 60px;
 }
 
-button[data-key=caps] {
+button[data-key=CapsLock] {
   width: 70px;
 }
 
-button[data-key=enter],
-button[data-key=lshift],
-button[data-key=rshift] {
+button[data-key=Enter],
+button[data-key=ShiftLeft],
+button[data-key=ShiftRight] {
   width: 90px;
 }
 
-button[data-key=lctrl],
-button[data-key=lwin],
-button[data-key=lalt],
-button[data-key=ralt],
-button[data-key=rctrl] {
+button[data-key=ControlLeft],
+button[data-key=MetaLeft],
+button[data-key=AltLeft],
+button[data-key=AltRight],
+button[data-key=ControlRight] {
   width: 50px;
 }
 
-button[data-key=space] {
+button[data-key=Space] {
   width: 280px;
 }
 
