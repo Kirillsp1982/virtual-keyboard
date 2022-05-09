@@ -89,3 +89,7 @@ button[data-key=rctrl] {
 button[data-key=space] {
   width: 280px;
 }
+
+.descripton {
+  text-align: center;
+}
