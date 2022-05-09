@@ -68,10 +68,10 @@ const createKeyboardTemplate = () => (
     <button data-key="lalt">Alt</button>
     <button data-key="space"></button>
     <button data-key="ralt">Alt</button>
-    <button data-key="rctrl">Ctrl</button>
     <button data-key="arrowleft">&larr;</button>
     <button data-key="arrowdown">&darr;</button>
     <button data-key="arrowright">&rarr;</button>
+    <button data-key="rctrl">Ctrl</button>
   </div>
 </div>`);
 
