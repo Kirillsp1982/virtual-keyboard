@@ -10,6 +10,10 @@ let caps = false;
 let shift = false;
 let langEn = true;
 
+const storage = window.localStorage;
+const storageLangEn = storage.getItem('langEn');
+if (storageLangEn !== undefined) langEn = JSON.parse(storageLangEn);
+
 const body = document.querySelector('body');
 render(body, createMainTemplate());
 
@@ -41,6 +45,7 @@ window.addEventListener('keydown', (e) => {
   }
   if (el.dataset.en === 'Ctrl' && shift) {
     langEn = !langEn;
+    storage.setItem('langEn', langEn);
     addButtonText(caps, shift, langEn);
     e.preventDefault();
   }
@@ -77,6 +82,7 @@ window.addEventListener('mousedown', (e) => {
   }
   if (e.target.nodeName === 'BUTTON' && e.target.dataset.en === 'Ctrl' && shift) {
     langEn = !langEn;
+    storage.setItem('langEn', langEn);
     addButtonText(caps, shift, langEn);
     e.preventDefault();
   }
