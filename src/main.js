@@ -8,6 +8,7 @@ import {
 
 let caps = false;
 let shift = false;
+let langEn = true;
 
 const body = document.querySelector('body');
 render(body, createMainTemplate());
@@ -18,14 +19,15 @@ render(mainContainer, createKeyboardTemplate());
 render(mainContainer, createTextTemplate());
 
 addListeners();
-addButtonText(caps, shift);
+addButtonText(caps, shift, langEn);
 
 window.addEventListener('keydown', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
   if (el.dataset.key === 'CapsLock') {
     el.classList.toggle('pressed');
     caps = !caps;
-    addButtonText(caps, shift);
+    addButtonText(caps, shift, langEn);
+    e.preventDefault();
   }
   if (el && el.dataset.key !== 'CapsLock') {
     el.classList.add('pressed');
@@ -34,7 +36,13 @@ window.addEventListener('keydown', (e) => {
   }
   if (el.dataset.en === 'Shift') {
     shift = true;
-    addButtonText(caps, shift);
+    addButtonText(caps, shift, langEn);
+    e.preventDefault();
+  }
+  if (el.dataset.en === 'Ctrl' && shift) {
+    langEn = !langEn;
+    addButtonText(caps, shift, langEn);
+    e.preventDefault();
   }
 });
 
@@ -46,7 +54,8 @@ window.addEventListener('keyup', (e) => {
   }
   if (el.dataset.en === 'Shift') {
     shift = false;
-    addButtonText(caps, shift);
+    addButtonText(caps, shift, langEn);
+    e.preventDefault();
   }
 });
 
@@ -58,18 +67,23 @@ window.addEventListener('mousedown', (e) => {
   if (e.target.nodeName === 'BUTTON' && e.target.dataset.key === 'CapsLock') {
     e.target.classList.toggle('pressed');
     caps = !caps;
-    addButtonText(caps, shift);
+    addButtonText(caps, shift, langEn);
     e.preventDefault();
   }
   if (e.target.nodeName === 'BUTTON' && e.target.dataset.en === 'Shift') {
     shift = true;
-    addButtonText(caps, shift);
+    addButtonText(caps, shift, langEn);
+    e.preventDefault();
+  }
+  if (e.target.nodeName === 'BUTTON' && e.target.dataset.en === 'Ctrl' && shift) {
+    langEn = !langEn;
+    addButtonText(caps, shift, langEn);
     e.preventDefault();
   }
 });
 
 window.addEventListener('mouseup', (e) => {
   shift = false;
-  addButtonText(caps, shift);
+  addButtonText(caps, shift, langEn);
   e.preventDefault();
 });

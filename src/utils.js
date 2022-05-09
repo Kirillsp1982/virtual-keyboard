@@ -35,18 +35,31 @@ export const addTextareaValue = (key) => {
   textarea.value = valueArr.join('');
 };
 
-export const addButtonText = (caps, shift) => {
-  if (!caps || (caps && shift)) {
+export const addButtonText = (caps, shift, lang) => {
+  if (lang && (!caps || (caps && shift))) {
     buttons.forEach((el) => {
       const elem = el;
       elem.innerHTML = elem.dataset.en;
     });
   }
 
-  if ((caps && !shift) || (!caps && shift)) {
+  if (lang && ((caps && !shift) || (!caps && shift))) {
     buttons.forEach((el) => {
       const elem = el;
       elem.innerHTML = elem.dataset.enshift;
+    });
+  }
+  if (!lang && (!caps || (caps && shift))) {
+    buttons.forEach((el) => {
+      const elem = el;
+      elem.innerHTML = elem.dataset.ru;
+    });
+  }
+
+  if (!lang && ((caps && !shift) || (!caps && shift))) {
+    buttons.forEach((el) => {
+      const elem = el;
+      elem.innerHTML = elem.dataset.rushift;
     });
   }
 };
