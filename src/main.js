@@ -14,3 +14,20 @@ const mainContainer = document.querySelector('main .container');
 render(mainContainer, createTextareaTemplate());
 render(mainContainer, createKeyboardTemplate());
 render(mainContainer, createTextTemplate());
+
+window.addEventListener('keydown', (e) => {
+  console.log(e.code);
+  const el = document.querySelector(`button[data-key='${e.code}']`);
+  if (el) {
+    el.classList.add('pressed');
+    e.preventDefault();
+  }
+});
+
+window.addEventListener('keyup', (e) => {
+  const el = document.querySelector(`button[data-key='${e.code}']`);
+  if (el) {
+    el.classList.remove('pressed');
+    e.preventDefault();
+  }
+});
