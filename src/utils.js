@@ -35,9 +35,18 @@ export const addTextareaValue = (key) => {
   textarea.value = valueArr.join('');
 };
 
-export const addButtonText = () => {
-  buttons.forEach((el) => {
-    const elem = el;
-    elem.innerHTML = el.dataset.en;
-  });
+export const addButtonText = (caps, shift) => {
+  if (!caps || (caps && shift)) {
+    buttons.forEach((el) => {
+      const elem = el;
+      elem.innerHTML = elem.dataset.en;
+    });
+  }
+
+  if ((caps && !shift) || (!caps && shift)) {
+    buttons.forEach((el) => {
+      const elem = el;
+      elem.innerHTML = elem.dataset.enshift;
+    });
+  }
 };
