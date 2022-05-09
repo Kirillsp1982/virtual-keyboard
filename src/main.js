@@ -33,8 +33,12 @@ window.addEventListener('keyup', (e) => {
 });
 
 window.addEventListener('click', (e) => {
-  if (e.target.nodeName === 'BUTTON') {
+  if (e.target.nodeName === 'BUTTON' && e.target.dataset.key !== 'CapsLock') {
     addTextareaValue(e.target.innerHTML);
+    e.preventDefault();
+  }
+  if (e.target.nodeName === 'BUTTON' && e.target.dataset.key === 'CapsLock') {
+    e.target.classList.toggle('pressed');
     e.preventDefault();
   }
 });
