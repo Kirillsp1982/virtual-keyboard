@@ -27,7 +27,7 @@ addButtonText(caps, shift, langEn);
 
 window.addEventListener('keydown', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
-  if (el.dataset.key === 'CapsLock') {
+  if (el && el.dataset.key === 'CapsLock') {
     el.classList.toggle('pressed');
     caps = !caps;
     addButtonText(caps, shift, langEn);
@@ -38,12 +38,12 @@ window.addEventListener('keydown', (e) => {
     addTextareaValue(el.innerHTML);
     e.preventDefault();
   }
-  if (el.dataset.en === 'Shift') {
+  if (el && el.dataset.en === 'Shift') {
     shift = true;
     addButtonText(caps, shift, langEn);
     e.preventDefault();
   }
-  if (el.dataset.en === 'Ctrl' && shift) {
+  if (el && el.dataset.en === 'Ctrl' && shift) {
     langEn = !langEn;
     storage.setItem('langEn', langEn);
     addButtonText(caps, shift, langEn);
@@ -57,7 +57,7 @@ window.addEventListener('keyup', (e) => {
     el.classList.remove('pressed');
     e.preventDefault();
   }
-  if (el.dataset.en === 'Shift') {
+  if (el && el.dataset.en === 'Shift') {
     shift = false;
     addButtonText(caps, shift, langEn);
     e.preventDefault();
