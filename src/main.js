@@ -15,10 +15,18 @@ render(mainContainer, createTextareaTemplate());
 render(mainContainer, createKeyboardTemplate());
 render(mainContainer, createTextTemplate());
 
+const textarea = document.querySelector('textarea');
+const valueArr = [];
+const addTextareaValue = (key) => {
+  valueArr.push(key);
+  textarea.value = valueArr.join('');
+};
+
 window.addEventListener('keydown', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
   if (el) {
     el.classList.add('pressed');
+    addTextareaValue(el.innerHTML);
     e.preventDefault();
   }
 });
@@ -27,6 +35,13 @@ window.addEventListener('keyup', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
   if (el) {
     el.classList.remove('pressed');
+    e.preventDefault();
+  }
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target.nodeName === 'BUTTON') {
+    addTextareaValue(e.target.innerHTML);
     e.preventDefault();
   }
 });
