@@ -30,7 +30,7 @@ const createKeyboardTemplate = () => (
     <button data-key="KeyP">p</button>
     <button data-key="BracketLeft">[</button>
     <button data-key="BracketRight">]</button>
-    <button data-key="Backslash" id='backslash'>\\</button>
+    <button data-key="Backslash">\\</button>
   </div>
   <div class="row">
     <button data-key="CapsLock">Caps</button>
@@ -44,7 +44,7 @@ const createKeyboardTemplate = () => (
     <button data-key="KeyK">k</button>
     <button data-key="KeyL">l</button>
     <button data-key="Semicolon">;</button>
-    <button data-key="Quote" id='quote'>'</button>
+    <button data-key="Quote">'</button>
     <button data-key="Enter">&crarr;</button>
   </div>
   <div class="row">
