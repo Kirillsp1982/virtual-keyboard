@@ -1,12 +1,14 @@
 let textarea = null;
+let buttons = null;
 const valueArr = [];
 
 export const render = (container, element, place = 'beforeend') => {
   container.insertAdjacentHTML(place, element);
 };
 
-export const addTextareaListener = () => {
+export const addListeners = () => {
   textarea = document.querySelector('textarea');
+  buttons = document.querySelectorAll('button');
 };
 
 export const addTextareaValue = (key) => {
@@ -31,4 +33,11 @@ export const addTextareaValue = (key) => {
       break;
   }
   textarea.value = valueArr.join('');
+};
+
+export const addButtonText = () => {
+  buttons.forEach((el) => {
+    const elem = el;
+    elem.innerHTML = el.dataset.en;
+  });
 };

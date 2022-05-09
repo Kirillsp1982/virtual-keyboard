@@ -2,7 +2,9 @@ import createMainTemplate from './components/createMainTemplate';
 import createTextareaTemplate from './components/createTextareaTemplate';
 import createKeyboardTemplate from './components/createKeyboardTemplate';
 import createTextTemplate from './components/createTextTemplate';
-import { render, addTextareaListener, addTextareaValue } from './utils';
+import {
+  render, addListeners, addTextareaValue, addButtonText,
+} from './utils';
 
 const body = document.querySelector('body');
 render(body, createMainTemplate());
@@ -12,7 +14,8 @@ render(mainContainer, createTextareaTemplate());
 render(mainContainer, createKeyboardTemplate());
 render(mainContainer, createTextTemplate());
 
-addTextareaListener();
+addListeners();
+addButtonText();
 
 window.addEventListener('keydown', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
