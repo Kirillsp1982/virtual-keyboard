@@ -16,7 +16,8 @@ addTextareaListener();
 
 window.addEventListener('keydown', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
-  if (el) {
+  if (el.dataset.key === 'CapsLock') el.classList.toggle('pressed');
+  if (el && el.dataset.key !== 'CapsLock') {
     el.classList.add('pressed');
     addTextareaValue(el.innerHTML);
     e.preventDefault();
@@ -25,7 +26,7 @@ window.addEventListener('keydown', (e) => {
 
 window.addEventListener('keyup', (e) => {
   const el = document.querySelector(`button[data-key='${e.code}']`);
-  if (el) {
+  if (el && el.dataset.key !== 'CapsLock') {
     el.classList.remove('pressed');
     e.preventDefault();
   }
